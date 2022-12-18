@@ -18,7 +18,7 @@ export const fetchAsyncMovies = createAsyncThunk(
 export const fetchAsyncShows = createAsyncThunk(
   "movies/fetchAsyncMovies",
   async () => {
-    const seriesText = "Friends";
+    const seriesText = "Triends";
     const response = await movieApi
       .get(`?apikey=${APIkey}&s=${seriesText}&type=series`)
       .catch((err) => {
@@ -41,27 +41,25 @@ const movieSlice = createSlice({
       state.movies = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchAsyncMovies.pending, () => {
+      console.log("request is pending");
+    });
+    builder.addCase(fetchAsyncMovies.fulfilled, (state, action) => {
+      return {
+        ...state,
+        movies: action.payload,
+      };
+    });
+    builder.addCase(fetchAsyncMovies.rejected, () => {
+      console.log("request is rejected");
+    });
 
-  extraReducers: {
-    [fetchAsyncMovies.pending]: () => {
-      console.log("Pending");
-    },
-    [fetchAsyncMovies.fulfilled]: (state, action) => {
-      console.log("Data is Fetched Successfully");
-      return { ...state, movies: action.payload };
-    },
-    [fetchAsyncMovies.rejected]: () => {
-      console.log("Rejected");
-    },
-    [fetchAsyncShows.fulfilled]: (state, action) => {
-      console.log("Data is Fetched Successfully");
-      return { ...state, shows: action.payload };
-    },
   },
 });
 
 export const { addMovies } = movieSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
-export const getAllShows = (state) => state.movies.shows;
+export const getAllShows = (state) => state.showa.shows;
 
 export default movieSlice.reducer;
