@@ -1,0 +1,36 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+.container {
+  height: 80vh;
+  background-color: white;
+}
+h1 {
+  text-align: center;
+}
+iframe {
+  border: none;
+  height: 500px;
+  width: 500px;
+  margin-left: 35%;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: greenyellow;
+    transition: all 0.3s;
+    &:hover {
+      background-color: white;
+      border: 2px solid tomato;
+    }
+  }
+}
