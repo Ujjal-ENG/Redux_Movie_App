@@ -1,1 +1,6 @@
-export const API_KEY = "4e68f87d";
+
+import axios from "axios";
+
+export default axios.create({
+  baseURL: " http://www.omdbapi.com",
+});
