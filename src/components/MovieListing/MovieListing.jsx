@@ -9,7 +9,7 @@ const MovieListing = () => {
   const movies = useSelector(getAllMovies);
   const shows = useSelector(getAllShows);
 
-  let renderMovies,
+  let renderMovies = "",
     renderShows = "";
 
   renderMovies =
